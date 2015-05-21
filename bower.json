@@ -1,0 +1,16 @@
+{
+  "name": "cart",
+  "version": "0.0.0",
+  "authors": [
+    "Brad Beeler <bbeeler@tvg.com>"
+  ],
+  "main": "application/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
