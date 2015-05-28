@@ -1,0 +1,7 @@
+.DS_Store
+*~*
+**/node_modules/*
+js/coverage
+*.rpm
+tmp*
+**/bower_components/*
