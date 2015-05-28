@@ -16,12 +16,38 @@ var server = restify.createServer({
   handleUpgrades: false  // Hook the upgrade event from the node HTTP server, pushing Connection: Upgrade requests through the regular request handling chain; defaults to false
 });
 
-server.get('/', function(req, res, next){
+server.get('/test', function(req, res, next){
 	var data = {
 		"test": "blalbalbla"
 	};
 	res.json(data);
 });
+
+server.get('/product-list', function(req, res, next){
+  var data = [
+    {
+      "name" : "A1",
+      "price" : "2.99",
+      "id" : 0
+    },
+    {
+      "name" : "B2",
+      "price" : "5.99",
+      "id" : 1
+    },
+    {
+      "name" : "c3",
+      "price" : "10.99",
+      "id" : 2
+    }
+  ];
+  res.json(data);
+});
+
+server.get(/\/?.*/, restify.serveStatic({
+  directory: '../application',
+  default: 'index.html'
+}));
 
 server.listen(8080, function() {
   console.log('%s listening at %s', server.name, server.url);

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<!-- endbower -->
+	<script src="src/app.js"></script>
+	<script src="src/factories/productFac.js"></script>
+	<script src="src/factories/cartFac.js"></script>
+	<script src="src/controllers/productCtrl.js"></script>
+	<script src="src/controllers/cartCtrl.js"></script>
+</head>
+<body>
+<div ng-controller="cartCtrl as cart">
+<div><a href="#/cart">Cart</a> Item Count = <strong>{{ itemCount }}</strong> for <strong>{{ cartTotal | number:2 }}</strong></div>
+<div ng-view=""></div>
+</div>
+</body>
+</html>

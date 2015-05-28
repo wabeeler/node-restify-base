@@ -1,0 +1,6 @@
+<h3>Product List</h3>
+<div ng-controller="productCtrl">
+	<div ng-repeat="product in products">
+		<a href="" ng-click="$parent.addItem(product)">{{ product.name }} - {{ product.price }}</a>
+	</div>
+</div>

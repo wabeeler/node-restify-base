@@ -1,0 +1,13 @@
+<h2>Cart</h2>
+<table ng-controller="cartCtrl">
+	<th>
+		<td>Product Name</td>
+		<td>Qty.</td>
+		<td>Price</td>
+	</th>
+	<tr ng-repeat="product in products">
+		<td>{{ product.name }}</td>
+		<td>{{ product.qty }}</td>
+		<td>{{ product.qty * product.price }}</td>
+	</tr>
+</table>
