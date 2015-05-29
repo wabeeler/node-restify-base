@@ -18,11 +18,7 @@ angular.module('myApp')
 			var returnObj = {};
 
 			returnObj.addItem = function(item) {
-				var cartData = $cookies.myNgCart || [];
-
-				if( typeof cartData === 'string' ) {
-					cartData = angular.fromJson(cartData);
-				}
+				var cartData = getCartData();
 
 				var found = false;
 				angular.forEach(cartData, function(value, key){
@@ -42,13 +38,9 @@ angular.module('myApp')
 			};
 
 			returnObj.removeItem = function(item) {
-				var cartData = $cookies.myNgCart || [];
+				var cartData = getCartData();
 
-				if( typeof cartData === 'string' ) {
-					cartData = angular.fromJson(cartData);
-				}
-
-				angular.forEach(carData, function(value, key) {
+				angular.forEach(cartData, function(value, key) {
 					if( value.id == item.id ) {
 						if( value.quantity > 1 ) {
 							cartData[key].quantity = cartData[key].quantity - 1;
@@ -59,17 +51,13 @@ angular.module('myApp')
 					}
 				});
 
-				$cookies.myNgCart = cartData;
+				$cookies.myNgCart = angular.toJson(cartData);
 
 			};
 
 			returnObj.getTotal = function() {
-				var cartData = $cookies.myNgCart,
+				var cartData = getCartData(),
 					cartTotal = 0;
-
-				if( typeof cartData === 'string' ) {
-					cartData = angular.fromJson(cartData);
-				}
 
 				angular.forEach(cartData, function(value, key) {
 					cartTotal += value.price * value.quantity;
@@ -80,21 +68,28 @@ angular.module('myApp')
 			};
 
 			returnObj.getItemCount = function() {
-				var cartData = $cookies.myNgCart;
+				var cartData = getCartData();
+
+				var cartItems = 0;
+				angular.forEach(cartData, function(value, key) {
+					cartItems += value.quantity;
+				});
+
+				return cartItems;
+			};
+
+			returnObj.getItems = function() {
+				return getCartData();
+			};
+
+			function getCartData() {
+				var cartData = $cookies.myNgCart || [];
 
 				if( typeof cartData === 'string' ) {
 					cartData = angular.fromJson(cartData);
-
-					var cartItems = 0;
-					angular.forEach(cartData, function(value, key) {
-						cartItems += value.quantity;
-					});
-
-					return cartItems;
 				}
 
-				return 0;
-
+				return cartData;
 			}
 
 			return returnObj;

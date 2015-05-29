@@ -4,7 +4,7 @@ angular.module('myApp')
 			var returnObj = {};
 
 			returnObj.getProducts = function() {
-				return $http.get('/product-list')
+				return $http.get('/product-list');
 
 			};
 

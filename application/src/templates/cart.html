@@ -1,13 +1,18 @@
 <h2>Cart</h2>
-<table ng-controller="cartCtrl">
-	<th>
-		<td>Product Name</td>
-		<td>Qty.</td>
-		<td>Price</td>
-	</th>
-	<tr ng-repeat="product in products">
-		<td>{{ product.name }}</td>
-		<td>{{ product.qty }}</td>
-		<td>{{ product.qty * product.price }}</td>
+<table style="width: 400px; text-align: left;">
+	<tr>
+		<th>Product Name</th>
+		<th>Qty.</th>
+		<th>Price</th>
+	</tr>
+	<tr ng-repeat="item in cartItems track by $index">
+		<td>{{ item.name }}</td>
+		<td>{{ item.quantity }}</td>
+		<td>{{ item.quantity * item.price | number:2}}</td>
+		<td><a href="" ng-click="removeItem(item)">rm</span></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: right; font-weight: bold;">Total:</td>
+		<td colspan="2" style="font-weight: bold">{{ cartTotal | number:2 }}</td>
 	</tr>
 </table>

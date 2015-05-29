@@ -14,10 +14,11 @@
 	<script src="src/factories/cartFac.js"></script>
 	<script src="src/controllers/productCtrl.js"></script>
 	<script src="src/controllers/cartCtrl.js"></script>
+	<script src="src/directives/cartSnapshotDir.js"></script>
 </head>
 <body>
 <div ng-controller="cartCtrl as cart">
-<div><a href="#/cart">Cart</a> Item Count = <strong>{{ itemCount }}</strong> for <strong>{{ cartTotal | number:2 }}</strong></div>
+<cart-snap></cart-snap>
 <div ng-view=""></div>
 </div>
 </body>

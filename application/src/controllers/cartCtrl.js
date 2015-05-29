@@ -12,11 +12,12 @@ angular.module('myApp')
 			$scope.removeItem = function(item) {
 				cart.removeItem(item);
 				updateCartDisplay();
-			}
+			};
 
 			function updateCartDisplay() {
 				$scope.itemCount = cart.getItemCount();
 				$scope.cartTotal = cart.getTotal();
+				$scope.cartItems = cart.getItems();
 			}
 		}
 	]);
